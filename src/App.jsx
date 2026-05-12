@@ -41,7 +41,7 @@ export default function App() {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-api-key": apiKey, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
-        body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 4000, system: SYSTEM_PROMPT, tools: [{ type: "web_search_20250305", name: "web_search" }], messages: [{ role: "user", content: `Найди объявления на blocket.se: "${query}". Верни только JSON.` }] })
+        body: JSON.stringify({ model: "claude-sonnet-4-5", max_tokens: 4000, system: SYSTEM_PROMPT, tools: [{ type: "web_search_20250305", name: "web_search" }], messages: [{ role: "user", content: `Найди объявления на blocket.se: "${query}". Верни только JSON.` }] })
       });
       const data = await res.json();
       if (data.error) throw new Error(data.error.message);
